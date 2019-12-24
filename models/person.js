@@ -6,7 +6,7 @@ const url = process.env.MONGODB_URI;
 console.log("connecting to", url);
 
 mongoose
-  .connect(url, { useNewUrlParser: true })
+  .connect(url.toString(), { useNewUrlParser: true })
   .then(result => {
     console.log("connected to MongoDB");
   })
@@ -28,8 +28,6 @@ const personSchema = new mongoose.Schema({
     required : true
   }
 });
-
-personSchema.plugin(validator)
 
 personSchema.set("toJSON", {
   transform: (document, returnedObject) => {
