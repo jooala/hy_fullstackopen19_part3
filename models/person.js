@@ -1,3 +1,4 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 const validator = require('mongoose-unique-validator')
 
@@ -6,7 +7,7 @@ const url = process.env.MONGODB_URI;
 console.log("connecting to", url);
 
 mongoose
-  .connect(url.toString(), { useNewUrlParser: true })
+  .connect(url, { useNewUrlParser: true })
   .then(result => {
     console.log("connected to MongoDB");
   })
